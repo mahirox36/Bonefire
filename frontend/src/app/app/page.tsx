@@ -9,17 +9,17 @@ import { useEffect, useRef, useState } from "react";
 //             })
 
 const Page = () => {
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<Event | null>(null);
 
   const socketRef = useRef<WebSocket | null>(null);
   const [messages, setMessages] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState("");
   const [isConnected, setIsConnected] = useState(false);
-  const [isTyping, setIsTyping] = useState(false);
-  const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(
-    null
-  );
+  // const [isTyping, setIsTyping] = useState(false);
+  // const [typingTimeout, setTypingTimeout] = useState<NodeJS.Timeout | null>(
+  //   null
+  // );
 
   useEffect(() => {
     const token = localStorage.getItem("token") || ""; // Retrieve token from local storage
@@ -65,6 +65,12 @@ const Page = () => {
         <h1 className="text-2xl font-bold text-center">WebSocket Chat</h1>
       </header>
       <main className="flex-grow flex flex-col p-4 overflow-hidden">
+        {error && (
+          <div className="mb-4 p-4 bg-red-600 text-white rounded-lg shadow-md">
+            <p className="font-bold">Error:</p>
+            <p>{(error as ErrorEvent).message}</p>
+          </div>
+        )}
         <div className="flex-grow overflow-y-auto bg-gray-700 rounded-lg p-4 shadow-inner space-y-4">
           {messages.map((message, index) => {
             const parsedMessage = JSON.parse(message);

@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -48,7 +47,7 @@ const Page = () => {
         const data = await response.json();
         // Store token in localStorage
         localStorage.setItem("token", data.access_token);
-        router.push("/dashboard"); // Redirect to dashboard after login
+        router.push("/app"); // Redirect to app after login
       } else {
         // Registration logic
         const queryParams = new URLSearchParams({
