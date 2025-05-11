@@ -23,7 +23,7 @@ const Page = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token") || ""; // Retrieve token from local storage
-    const socket = new WebSocket(`ws://apibonefire.mahirou.online/pyre?token=${token}`);
+    const socket = new WebSocket(`wss://apibonefire.mahirou.online/pyre?token=${token}`);
 
     socket.onopen = () => {
       console.log("WebSocket connection established");
