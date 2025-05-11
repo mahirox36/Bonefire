@@ -32,7 +32,7 @@ const Page = () => {
         params.append("username", formData.username);
         params.append("password", formData.password);
 
-        const response = await fetch("http://localhost:8000/token", {
+        const response = await fetch("http://apibonefire.mahirou.online/token", {
           method: "POST",
           headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -57,7 +57,7 @@ const Page = () => {
           display_name: formData.display_name || "",
         }).toString();
 
-        const response = await fetch(`http://localhost:8000/register?${queryParams}`, {
+        const response = await fetch(`http://apibonefire.mahirou.online/register?${queryParams}`, {
           method: "POST",
         });
 
